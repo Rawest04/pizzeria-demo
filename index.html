@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pizzeria al Forno | Pizza Tradizionale al Forno a Legna – IT/EN</title>
+  <title>Pizzeria al Forno | Pizza Tradizionale al Forno a Legna — IT/EN</title>
   <meta name="keywords" content="pizzeria, forno a legna, pizza tradizionale, migliore pizza, prenotazione ristorante, Italian restaurant">
-  <meta name="description" content="Pizzeria tradizionale italiana – forno a legna, ingredienti freschi, prenotazioni online. Bilingual demo website (Italian/English)." />
+  <meta name="description" content="Pizzeria tradizionale italiana — forno a legna, ingredienti freschi, prenotazioni WhatsApp. Sito demo bilingue (Italiano/English)." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,6 +47,7 @@
     .hero::before{
       content:"";
       position:absolute;inset:0;
+      /* Foto forno a legna — URL stabile + parametri */
       background:url('https://images.unsplash.com/photo-1541745537413-b804bfff6974?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
       z-index:-1;filter:brightness(.55)
     }
@@ -91,8 +92,8 @@
   </style>
 
   <!-- Open Graph (social) -->
-  <meta property="og:title" content="Pizzeria al Forno - Pizza Tradizionale al Forno a Legna"/>
-  <meta property="og:description" content="Pizzeria tradizionale italiana con forno a legna, ingredienti freschi e prenotazioni rapide via WhatsApp."/>
+  <meta property="og:title" content="Pizzeria al Forno — Forno a Legna · Wood-Fired Pizza"/>
+  <meta property="og:description" content="Impasto a lunga lievitazione, ingredienti freschi e forno a legna. Prenota via WhatsApp. / Long-fermented dough, fresh ingredients and a wood-fired oven."/>
   <meta property="og:type" content="website"/>
   <meta property="og:image" content="https://images.unsplash.com/photo-1541745537413-b804bfff6974?auto=format&fit=crop&w=1200&q=80"/>
 
@@ -105,7 +106,7 @@
     "telephone": "+390612345678",
     "servesCuisine": "Pizza",
     "priceRange": "€€",
-    "url": "https://www.pizzeriaalforno.it",
+    "url": "https://example.com",
     "openingHours": "Mo-Su 12:30-23:00",
     "image": "https://images.unsplash.com/photo-1541745537413-b804bfff6974?auto=format&fit=crop&w=1200&q=80",
     "acceptsReservations": "True"
@@ -143,32 +144,32 @@
 
   <section id="reviews" aria-label="Recensioni">
     <div class="container">
-      <h3 class="section-title">Cosa dicono i nostri clienti</h3>
+      <h3 class="section-title" data-i18n="reviews_title">Cosa dicono i nostri clienti</h3>
       <div class="card" style="padding:20px">
-        <p>“La migliore pizza della zona! Impasto leggero e ingredienti freschi.” – Marco</p>
-        <p>“Atmosfera accogliente e servizio impeccabile.” – Laura</p>
+        <p data-i18n="reviews_1">“La migliore pizza della zona! Impasto leggero e ingredienti freschi.” – Marco</p>
+        <p data-i18n="reviews_2">“Atmosfera accogliente e servizio impeccabile.” – Laura</p>
       </div>
     </div>
   </section>
 
   <section id="special" aria-label="Specialità della casa">
     <div class="container">
-      <h3 class="section-title">Specialità della Casa</h3>
+      <h3 class="section-title" data-i18n="special_title">Specialità della Casa</h3>
       <div class="card" style="padding:20px">
-        <h4>Pizza Regina</h4>
-        <p>La nostra pizza più amata: bufala DOP, pomodorini freschi, basilico e olio EVO premium.</p>
+        <h4 data-i18n="special_name">Pizza Regina</h4>
+        <p data-i18n="special_desc">La nostra pizza più amata: bufala DOP, pomodorini freschi, basilico e olio EVO premium.</p>
       </div>
     </div>
   </section>
 
-  <!-- Galleria aggiornata -->
+  <!-- Galleria -->
   <section id="gallery" aria-label="Galleria Fotografica">
     <div class="container">
-      <h3 class="section-title">Galleria</h3>
+      <h3 class="section-title" data-i18n="gallery_title">Galleria</h3>
       <div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:10px">
-        <img src="https://images.unsplash.com/photo-1601924582971-c9d1955d39e0?auto=format&fit=crop&w=800&q=80" alt="Pizza forno" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=800&q=80" alt="Forno a legna" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1543779503-6b6c03b7c4c9?auto=format&fit=crop&w=800&q=80" alt="Ingredienti freschi" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1601924582971-c9d1955d39e0?auto=format&fit=crop&w=800&q=80" alt="Pizza nel forno a legna" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=800&q=80" alt="Forno a legna tradizionale" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1543779503-6b6c03b7c4c9?auto=format&fit=crop&w=800&q=80" alt="Ingredienti freschi per pizza" loading="lazy">
       </div>
     </div>
   </section>
@@ -181,7 +182,7 @@
         <p class="subtle" data-i18n="about_text_2">Ogni pizza è stesa a mano e cotta nel nostro forno a legna. Ti aspettiamo per farti sentire come a casa.</p>
       </div>
       <div class="card" style="overflow:hidden">
-        <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=1600&q=80" alt="Pizza napoletana uscita dal forno a legna" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=1600&q=80" alt="Pizza napoletana nel forno a legna" loading="lazy" />
       </div>
     </div>
   </section>
@@ -325,7 +326,7 @@
   </footer>
 
   <script>
-    // ====== Simple i18n dictionary ======
+    // ===== Dizionario bilingue =====
     const dict = {
       it: {
         nav_menu: "Menu",
@@ -335,6 +336,13 @@
         hero_sub: "Impasto a lunga lievitazione, ingredienti freschi e forno a legna. Prenota il tuo tavolo o ordina da asporto.",
         cta_view_menu: "Sfoglia il menù",
         cta_book: "Prenota ora",
+        reviews_title: "Cosa dicono i nostri clienti",
+        reviews_1: "“La migliore pizza della zona! Impasto leggero e ingredienti freschi.” – Marco",
+        reviews_2: "“Atmosfera accogliente e servizio impeccabile.” – Laura",
+        special_title: "Specialità della Casa",
+        special_name: "Pizza Regina",
+        special_desc: "La nostra pizza più amata: bufala DOP, pomodorini freschi, basilico e olio EVO premium.",
+        gallery_title: "Galleria",
         about_title: "La nostra storia",
         about_text_1: "Siamo una pizzeria di famiglia: selezioniamo farine italiane e lieviti naturali per un impasto leggero e digeribile.",
         about_text_2: "Ogni pizza è stesa a mano e cotta nel nostro forno a legna. Ti aspettiamo per farti sentire come a casa.",
@@ -360,13 +368,7 @@
         form_submit: "Invia richiesta",
         footer_tag: "Tradizione italiana dal 1989",
         hours_title: "Orari",
-        day_mon: "Lunedì",
-        day_tue: "Martedì",
-        day_wed: "Mercoledì",
-        day_thu: "Giovedì",
-        day_fri: "Venerdì",
-        day_sat: "Sabato",
-        day_sun: "Domenica",
+        day_mon: "Lunedì", day_tue: "Martedì", day_wed: "Mercoledì", day_thu: "Giovedì", day_fri: "Venerdì", day_sat: "Sabato", day_sun: "Domenica",
         follow_title: "Seguici",
         footer_order: "Ordina da asporto"
       },
@@ -378,6 +380,13 @@
         hero_sub: "Long-fermented dough, fresh ingredients and a wood-fired oven. Book your table or order takeaway.",
         cta_view_menu: "View the menu",
         cta_book: "Book now",
+        reviews_title: "What our customers say",
+        reviews_1: "“Best pizza in the area! Light dough and fresh ingredients.” – Marco",
+        reviews_2: "“Cozy atmosphere and impeccable service.” – Laura",
+        special_title: "House Special",
+        special_name: "Pizza Regina",
+        special_desc: "Our most loved pizza: buffalo mozzarella PDO, fresh cherry tomatoes, basil and premium EVO oil.",
+        gallery_title: "Gallery",
         about_title: "Our story",
         about_text_1: "We're a family-run pizzeria: we select Italian flours and natural leaven for a light, digestible dough.",
         about_text_2: "Every pizza is hand-stretched and baked in our wood-fired oven. Welcome — make yourself at home.",
@@ -392,7 +401,7 @@
         dish_campagnola: "Seasonal grilled veggies, EVO oil",
         menu_note: "* Wholegrain and lactose-free dough upon request.",
         reserve_title: "Book a table",
-        reserve_text: "Reserve via WhatsApp or fill the form. We'll confirm shortly.",
+        reserve_text: "Reserve via WhatsApp or fill in the form. We'll confirm shortly.",
         reserve_whatsapp: "Reserve on WhatsApp",
         form_name: "Name",
         form_date: "Date",
@@ -403,19 +412,13 @@
         form_submit: "Send request",
         footer_tag: "Italian tradition since 1989",
         hours_title: "Opening hours",
-        day_mon: "Monday",
-        day_tue: "Tuesday",
-        day_wed: "Wednesday",
-        day_thu: "Thursday",
-        day_fri: "Friday",
-        day_sat: "Saturday",
-        day_sun: "Sunday",
+        day_mon: "Monday", day_tue: "Tuesday", day_wed: "Wednesday", day_thu: "Thursday", day_fri: "Friday", day_sat: "Saturday", day_sun: "Sunday",
         follow_title: "Follow us",
         footer_order: "Order takeaway"
       }
     };
 
-    // ====== Language toggle ======
+    // ===== Language toggle =====
     const switcher = document.querySelector('.lang-switch');
     const langButtons = switcher.querySelectorAll('button');
     let currentLang = 'it';
@@ -432,6 +435,10 @@
         b.classList.toggle('active', isActive);
         b.setAttribute('aria-pressed', isActive);
       });
+      // Aggiorna meta title/description opzionale
+      document.title = lang==='it'
+        ? "Pizzeria al Forno | Pizza Tradizionale al Forno a Legna — IT/EN"
+        : "Pizzeria al Forno | Traditional Wood-Fired Pizza — IT/EN";
     }
 
     langButtons.forEach(b=>{
@@ -446,7 +453,7 @@
 
     applyI18n(currentLang);
 
-    // ====== WhatsApp deep link and form handler ======
+    // ===== WhatsApp deep link & form handler =====
     const WA_NUMBER = '+390612345678'; // <-- Sostituisci con il numero del cliente (con prefisso internazionale)
     const waButton = document.getElementById('waButton');
     const ctaOrder = document.getElementById('ctaOrder');
@@ -464,7 +471,7 @@
 
     // Default WA links
     waButton.href = makeWALink('Ciao! Vorrei prenotare un tavolo.');
-    ctaOrder.href = makeWALink('Vorrei ordinare da asporto.');
+    ctaOrder && (ctaOrder.href = makeWALink('Vorrei ordinare da asporto.'));
 
     document.getElementById('reserveForm').addEventListener('submit', (e)=>{
       e.preventDefault();
@@ -474,7 +481,8 @@
     });
 
     // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const yearEl = document.getElementById('year');
+    if(yearEl) yearEl.textContent = new Date().getFullYear();
   </script>
 
   <!-- Pulsante flottante WhatsApp -->
