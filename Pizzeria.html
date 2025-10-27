@@ -4,38 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pizzeria al Forno | Pizza Tradizionale al Forno a Legna — IT/EN</title>
-  <meta name="keywords" content="pizzeria, forno a legna, pizza tradizionale, migliore pizza, prenotazione ristorante, Italian restaurant">
   <meta name="description" content="Pizzeria tradizionale italiana — forno a legna, ingredienti freschi e prenotazioni WhatsApp. Sito demo bilingue (Italiano/English)." />
+  <meta name="keywords" content="pizzeria, forno a legna, pizza tradizionale, prenotazione, ristorante italiano" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#fff9f2;           /* beige caldo */
-      --paper:#fffaf4;        /* carta */
-      --ink:#262626;          /* testo */
-      --muted:#6b7280;        /* grigio */
-      --primary:#b22222;      /* rosso mattone */
-      --accent:#2e7d32;       /* verde basilico */
-      --gold:#c7a56b;         /* oro */
-      --line:#efe2d3;
+      --bg:#fff9f2; --paper:#fffaf4; --ink:#262626; --muted:#6b7280;
+      --primary:#b22222; --accent:#2e7d32; --gold:#c7a56b; --line:#efe2d3;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto;display:block}
-
-    /* Layout */
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;z-index:50;background:rgba(255,250,244,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+
+    /* Header / Navbar */
+    header{position:sticky;top:0;z-index:100;background:rgba(255,250,244,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
     .brand{display:flex;gap:12px;align-items:center}
     .brand-logo{width:40px;height:40px;border-radius:10px;background:conic-gradient(from 90deg,var(--primary),var(--gold),var(--accent));box-shadow:inset 0 0 0 3px #fff}
-    .brand h1{font-family:"Playfair Display",serif;font-size:20px;letter-spacing:.5px;margin:0}
-    .nav-actions{display:flex;gap:10px;align-items:center}
+    .brand h1{font-family:"Playfair Display",serif;font-size:20px;margin:0}
+
+    .nav-right{display:flex;align-items:center;gap:10px}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid #e9dccb;background:#fff;cursor:pointer;font-weight:600}
     .btn.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
     .btn.ghost{background:#fff}
@@ -43,54 +37,58 @@
     .lang-switch button{border:0;background:transparent;padding:8px 12px;cursor:pointer;font-weight:600;color:var(--muted)}
     .lang-switch button.active{background:var(--primary);color:#fff}
 
-    /* Hero (Opzione B: tavolo con pizza, testi bianchi) */
+    /* Desktop links */
+    .desktop-links{display:flex;gap:8px}
+    @media(max-width:900px){.desktop-links{display:none}}
+    /* Hamburger */
+    .hamburger{display:none; width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:#fff;align-items:center;justify-content:center;cursor:pointer}
+    .hamburger svg{width:22px;height:22px}
+    @media(max-width:900px){.hamburger{display:inline-flex}}
+
+    /* Mobile drawer */
+    .drawer{position:fixed;inset:0 0 0 auto;width:min(88%,360px);background:var(--paper);box-shadow:-24px 0 40px rgba(0,0,0,.25);transform:translateX(100%);transition:transform .3s ease;z-index:140}
+    .drawer.open{transform:translateX(0)}
+    .drawer-header{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--line)}
+    .drawer-body{padding:16px;display:flex;flex-direction:column;gap:12px}
+    .drawer a{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}
+    .drawer .lang-switch{align-self:flex-start}
+
+    /* Hero */
     .hero{position:relative;isolation:isolate}
     .hero::before{
-      content:""; position:absolute; inset:0;
+      content:"";position:absolute;inset:0;
       background:url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-      z-index:-1; filter:brightness(.45);
+      z-index:-1;filter:brightness(.45);
     }
     .hero .container{padding:86px 20px 100px 20px;color:#fff}
-    .hero h2{
-      font-family:"Playfair Display",serif;
-      font-size:44px; line-height:1.1; margin:0 0 12px; color:#fff;
-      text-shadow:0 2px 14px rgba(0,0,0,.4);
-    }
-    .hero p{
-      max-width:680px; font-size:18px; margin:0 0 20px; color:#f5f5f5;
-      text-shadow:0 2px 10px rgba(0,0,0,.35);
-    }
+    .badge{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.45);color:#fff;backdrop-filter:blur(6px)}
+    .hero h2{font-family:"Playfair Display",serif;font-size:44px;line-height:1.1;margin:12px 0;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.4)}
+    .hero p{max-width:680px;font-size:18px;margin:0 0 20px;color:#f5f5f5;text-shadow:0 2px 10px rgba(0,0,0,.35)}
     .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-    .badge{
-      display:inline-block;padding:6px 12px;border-radius:999px;
-      background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.45);
-      color:#fff;backdrop-filter:blur(6px)
-    }
+    .btn:hover{transform:scale(1.05);transition:.25s}
 
-    /* Sections */
+    /* Sections & cards */
     section{padding:60px 0}
     .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.04)}
     .grid{display:grid;gap:20px}
     .grid-2{grid-template-columns:1fr}
     @media(min-width:900px){.grid-2{grid-template-columns:1.1fr .9fr}}
+    .section-title{font-family:"Playfair Display",serif;font-size:34px;margin:0 0 18px}
+    .subtle{color:var(--muted)}
 
     /* Menu */
-    .menu-section h3{font-family:"Playfair Display",serif;font-size:28px;margin:0 0 16px}
     .menu-grid{display:grid;grid-template-columns:1fr;gap:18px}
     @media(min-width:700px){.menu-grid{grid-template-columns:1fr 1fr}}
     .dish{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed #e5d7c5}
     .dish:last-child{border-bottom:0}
     .dish-name{font-weight:700}
-    .dish-desc{color:var(--muted);font-size:14px}
     .price{font-weight:700;color:var(--primary)}
 
-    /* Gallery: immagini uniformi e leggibili */
-    #gallery img{
-      width:100%;
-      height:250px;          /* altezza uniforme */
-      object-fit:cover;      /* ritaglio elegante */
-      border-radius:12px;
-    }
+    /* Gallery uniform */
+    #gallery .grid{grid-template-columns:1fr 1fr 1fr}
+    @media(max-width:900px){#gallery .grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:520px){#gallery .grid{grid-template-columns:1fr}}
+    #gallery img{width:100%;height:250px;object-fit:cover;border-radius:12px}
 
     /* Footer */
     footer{background:#121212;color:#e7e7e7}
@@ -98,51 +96,57 @@
     .footer-grid{display:grid;gap:20px;grid-template-columns:1fr;}
     @media(min-width:800px){.footer-grid{grid-template-columns:2fr 1fr 1fr}}
     .hours li{display:flex;justify-content:space-between;border-bottom:1px dashed rgba(255,255,255,.15);padding:6px 0}
-
-    /* Small helpers */
-    .section-title{font-family:"Playfair Display",serif;font-size:34px;margin:0 0 18px}
-    .subtle{color:var(--muted)}
-    .btn:hover{transform:scale(1.05);transition:0.3s ease}
-    .card{transition:transform 0.3s ease}
-    .card:hover{transform:translateY(-5px)}
   </style>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Pizzeria al Forno — Forno a Legna · Wood-Fired Pizza"/>
-  <meta property="og:description" content="Impasto a lunga lievitazione, ingredienti freschi e forno a legna. Prenota via WhatsApp. / Long-fermented dough, fresh ingredients and a wood-fired oven."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80"/>
-
-  <!-- Schema.org -->
-  <script type="application/ld+json">{
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": "Pizzeria al Forno",
-    "address": {"@type": "PostalAddress","streetAddress": "Via Roma 10","addressLocality": "Roma","postalCode": "00100","addressCountry": "IT"},
-    "telephone": "+390612345678",
-    "servesCuisine": "Pizza",
-    "priceRange": "€€",
-    "url": "https://example.com",
-    "openingHours": "Mo-Su 12:30-23:00",
-    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80",
-    "acceptsReservations": "True"
-  }</script>
+  <meta property="og:title" content="Pizzeria al Forno — Forno a Legna · Wood-Fired Pizza" />
+  <meta property="og:description" content="Impasto a lunga lievitazione, ingredienti freschi e forno a legna. Prenota via WhatsApp. / Long-fermented dough, fresh ingredients and a wood-fired oven." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80" />
 </head>
 <body>
+  <!-- Drawer mobile -->
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <strong>Pizzeria al Forno</strong>
+      <button id="closeDrawer" class="btn" aria-label="Chiudi menu">✕</button>
+    </div>
+    <div class="drawer-body">
+      <a href="#menu" data-i18n="nav_menu">Menu</a>
+      <a href="#reserve" class="primary" style="background:var(--primary);color:#fff" data-i18n="nav_reserve">Prenota</a>
+      <div class="lang-switch" id="langMobile">
+        <button class="active" data-lang="it" aria-pressed="true">IT</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </aside>
+
   <header aria-label="Main Navigation">
     <div class="container nav">
       <div class="brand">
         <div class="brand-logo" aria-hidden="true"></div>
         <h1>Pizzeria al Forno</h1>
       </div>
-      <nav class="nav-actions" aria-label="Actions">
-        <a href="#menu" class="btn ghost" data-i18n="nav_menu">Menu</a>
-        <a href="#reserve" class="btn primary" data-i18n="nav_reserve">Prenota</a>
-        <div class="lang-switch" role="group" aria-label="Language switcher">
-          <button class="active" data-lang="it" aria-pressed="true">IT</button>
-          <button data-lang="en" aria-pressed="false">EN</button>
+
+      <div class="nav-right">
+        <div class="desktop-links">
+          <a class="btn ghost" href="#menu" data-i18n="nav_menu">Menu</a>
+          <a class="btn primary" href="#reserve" data-i18n="nav_reserve">Prenota</a>
+          <div class="lang-switch" id="langDesktop">
+            <button class="active" data-lang="it" aria-pressed="true">IT</button>
+            <button data-lang="en" aria-pressed="false">EN</button>
+          </div>
         </div>
-      </nav>
+
+        <!-- Hamburger button -->
+        <button class="hamburger" id="openDrawer" aria-label="Apri menu" aria-controls="drawer" aria-expanded="false">
+          <!-- icona burger SVG -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -178,14 +182,13 @@
     </div>
   </section>
 
-  <!-- Galleria -->
   <section id="gallery" aria-label="Galleria Fotografica">
     <div class="container">
       <h3 class="section-title" data-i18n="gallery_title">Galleria</h3>
-      <div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:10px">
-        <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=800&q=80" alt="Pizza forno a legna" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1541745537413-b804bfff6974?auto=format&fit=crop&w=800&q=80" alt="Pizza in forno a legna" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?auto=format&fit=crop&w=800&q=80" alt="Ingredienti freschi per pizza" loading="lazy">
+      <div class="grid">
+        <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=1000&q=80" alt="Pizza rustica su tagliere" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1541745537413-b804bfff6974?auto=format&fit=crop&w=1000&q=80" alt="Pizza in forno a legna" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?auto=format&fit=crop&w=1000&q=80" alt="Ingredienti freschi per pizza" loading="lazy">
       </div>
     </div>
   </section>
@@ -210,24 +213,15 @@
         <div class="menu-section card" style="padding:20px">
           <h3 data-i18n="menu_classic">Pizze Classiche</h3>
           <div class="dish">
-            <div>
-              <div class="dish-name">Margherita</div>
-              <div class="dish-desc" data-i18n="dish_margherita">Pomodoro San Marzano, fior di latte, basilico</div>
-            </div>
+            <div><div class="dish-name">Margherita</div><div class="subtle" data-i18n="dish_margherita">Pomodoro San Marzano, fior di latte, basilico</div></div>
             <div class="price">€7,50</div>
           </div>
           <div class="dish">
-            <div>
-              <div class="dish-name">Marinara</div>
-              <div class="dish-desc" data-i18n="dish_marinara">Pomodoro, aglio, origano, olio EVO</div>
-            </div>
+            <div><div class="dish-name">Marinara</div><div class="subtle" data-i18n="dish_marinara">Pomodoro, aglio, origano, olio EVO</div></div>
             <div class="price">€6,50</div>
           </div>
           <div class="dish">
-            <div>
-              <div class="dish-name">Diavola</div>
-              <div class="dish-desc" data-i18n="dish_diavola">Salame piccante, pomodoro, fior di latte</div>
-            </div>
+            <div><div class="dish-name">Diavola</div><div class="subtle" data-i18n="dish_diavola">Salame piccante, pomodoro, fior di latte</div></div>
             <div class="price">€9,00</div>
           </div>
         </div>
@@ -235,24 +229,15 @@
         <div class="menu-section card" style="padding:20px">
           <h3 data-i18n="menu_special">Speciali del Forno</h3>
           <div class="dish">
-            <div>
-              <div class="dish-name">Bufalina</div>
-              <div class="dish-desc" data-i18n="dish_bufalina">DOP mozzarella di bufala, pomodoro, basilico</div>
-            </div>
+            <div><div class="dish-name">Bufalina</div><div class="subtle" data-i18n="dish_bufalina">DOP mozzarella di bufala, pomodoro, basilico</div></div>
             <div class="price">€10,50</div>
           </div>
           <div class="dish">
-            <div>
-              <div class="dish-name">Quattro Formaggi</div>
-              <div class="dish-desc" data-i18n="dish_quattro">Mozzarella, gorgonzola, provola, grana</div>
-            </div>
+            <div><div class="dish-name">Quattro Formaggi</div><div class="subtle" data-i18n="dish_quattro">Mozzarella, gorgonzola, provola, grana</div></div>
             <div class="price">€11,00</div>
           </div>
           <div class="dish">
-            <div>
-              <div class="dish-name">Campagnola</div>
-              <div class="dish-desc" data-i18n="dish_campagnola">Verdure di stagione grigliate, olio EVO</div>
-            </div>
+            <div><div class="dish-name">Campagnola</div><div class="subtle" data-i18n="dish_campagnola">Verdure di stagione grigliate, olio EVO</div></div>
             <div class="price">€10,00</div>
           </div>
         </div>
@@ -267,40 +252,19 @@
         <h3 class="section-title" data-i18n="reserve_title">Prenota un tavolo</h3>
         <p class="subtle" data-i18n="reserve_text">Prenota via WhatsApp o compila il modulo. Ti confermeremo al più presto.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
-          <a id="waButton" class="btn primary" target="_blank" rel="noopener" href="#" aria-label="WhatsApp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12a10 10 0 1 1-18.36 6.64L3 22l3.36-.64A10 10 0 1 1 22 12Z"/><path d="M19.4 15a4.5 4.5 0 0 1-2.6 2.6c-1.4.6-3.2.1-5.2-1.3-2-.9-3.7-3-4.2-4.6-.6-1.6-.3-3 .3-3.9A4.5 4.5 0 0 1 10 6"/></svg>
-            <span data-i18n="reserve_whatsapp">Prenota su WhatsApp</span>
-          </a>
+          <a id="waButton" class="btn primary" target="_blank" rel="noopener" href="#" aria-label="WhatsApp" data-i18n="reserve_whatsapp">Prenota su WhatsApp</a>
         </div>
         <form id="reserveForm" class="grid" style="gap:12px">
-          <label>
-            <span data-i18n="form_name">Nome</span>
-            <input required name="name" placeholder="Mario Rossi" style="width:100%;padding:12px;border:1px solid #e5d7c5;border-radius:10px" />
-          </label>
+          <label><span data-i18n="form_name">Nome</span><input required name="name" placeholder="Mario Rossi" style="width:100%;padding:12px;border:1px solid #e5d7c5;border-radius:10px" /></label>
           <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px">
-            <label>
-              <span data-i18n="form_date">Data</span>
-              <input required type="date" name="date" style="width:100%;padding:12px;border:1px solid #e5d7c5;border-radius:10px" />
-            </label>
-            <label>
-              <span data-i18n="form_time">Orario</span>
-              <input required type="time" name="time" style="width:100%;padding:12px;border:1px solid #e5d7c5;border-radius:10px" />
-            </label>
+            <label><span data-i18n="form_date">Data</span><input required type="date" name="date" style="width:100%;padding:12px;border:1px solid #e5d7c5;border-radius:10px" /></label>
+            <label><span data-i18n="form_time">Orario</span><input required type="time" name="time" style="width:100%;padding:12px;border:1px solid #e5d7c5;border-radius:10px" /></label>
           </div>
           <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px">
-            <label>
-              <span data-i18n="form_people">Persone</span>
-              <input required type="number" min="1" max="12" name="people" placeholder="2" style="width:100%;padding:12px;border:1px solid #e5d7c5;border-radius:10px" />
-            </label>
-            <label>
-              <span data-i18n="form_phone">Telefono</span>
-              <input name="phone" placeholder="333 1234567" style="width:100%;padding:12px;border:1px solid #e5d7c5;border-radius:10px" />
-            </label>
+            <label><span data-i18n="form_people">Persone</span><input required type="number" min="1" max="12" name="people" placeholder="2" style="width:100%;padding:12px;border:1px solid #e5d7c5;border-radius:10px" /></label>
+            <label><span data-i18n="form_phone">Telefono</span><input name="phone" placeholder="333 1234567" style="width:100%;padding:12px;border:1px solid #e5d7c5;border-radius:10px" /></label>
           </div>
-          <label>
-            <span data-i18n="form_notes">Note</span>
-            <textarea name="notes" rows="3" placeholder="Evento, preferenze, allergie…" style="width:100%;padding:12px;border:1px solid #e5d7c5;border-radius:10px"></textarea>
-          </label>
+          <label><span data-i18n="form_notes">Note</span><textarea name="notes" rows="3" placeholder="Evento, preferenze, allergie…" style="width:100%;padding:12px;border:1px solid #e5d7c5;border-radius:10px"></textarea></label>
           <button class="btn primary" type="submit" data-i18n="form_submit">Invia richiesta</button>
         </form>
       </div>
@@ -341,103 +305,32 @@
     </div>
   </footer>
 
+  <a href="#reserve" id="waFloat" class="btn primary" style="position:fixed;bottom:20px;right:20px;z-index:120">WhatsApp</a>
+
   <script>
-    // ===== Dizionario bilingue =====
+    // Dizionario IT/EN
     const dict = {
-      it: {
-        nav_menu: "Menu",
-        nav_reserve: "Prenota",
-        hero_badge: "Dal 1989 · Forno a legna",
-        hero_title: "La pizza della tradizione, come una volta.",
-        hero_sub: "Impasto a lunga lievitazione, ingredienti freschi e forno a legna. Prenota il tuo tavolo o ordina da asporto.",
-        cta_view_menu: "Sfoglia il menù",
-        cta_book: "Prenota ora",
-        reviews_title: "Cosa dicono i nostri clienti",
-        reviews_1: "“La migliore pizza della zona! Impasto leggero e ingredienti freschi.” – Marco",
-        reviews_2: "“Atmosfera accogliente e servizio impeccabile.” – Laura",
-        special_title: "Specialità della Casa",
-        special_name: "Pizza Regina",
-        special_desc: "La nostra pizza più amata: bufala DOP, pomodorini freschi, basilico e olio EVO premium.",
-        gallery_title: "Galleria",
-        about_title: "La nostra storia",
-        about_text_1: "Siamo una pizzeria di famiglia: selezioniamo farine italiane e lieviti naturali per un impasto leggero e digeribile.",
-        about_text_2: "Ogni pizza è stesa a mano e cotta nel nostro forno a legna. Ti aspettiamo per farti sentire come a casa.",
-        menu_title: "Il nostro menù",
-        menu_classic: "Pizze Classiche",
-        menu_special: "Speciali del Forno",
-        dish_margherita: "Pomodoro San Marzano, fior di latte, basilico",
-        dish_marinara: "Pomodoro, aglio, origano, olio EVO",
-        dish_diavola: "Salame piccante, pomodoro, fior di latte",
-        dish_bufalina: "DOP mozzarella di bufala, pomodoro, basilico",
-        dish_quattro: "Mozzarella, gorgonzola, provola, grana",
-        dish_campagnola: "Verdure di stagione grigliate, olio EVO",
-        menu_note: "* Impasto integrale e senza lattosio su richiesta.",
-        reserve_title: "Prenota un tavolo",
-        reserve_text: "Prenota via WhatsApp o compila il modulo. Ti confermeremo al più presto.",
-        reserve_whatsapp: "Prenota su WhatsApp",
-        form_name: "Nome",
-        form_date: "Data",
-        form_time: "Orario",
-        form_people: "Persone",
-        form_phone: "Telefono",
-        form_notes: "Note",
-        form_submit: "Invia richiesta",
-        footer_tag: "Tradizione italiana dal 1989",
-        hours_title: "Orari",
-        day_mon: "Lunedì", day_tue: "Martedì", day_wed: "Mercoledì", day_thu: "Giovedì", day_fri: "Venerdì", day_sat: "Sabato", day_sun: "Domenica",
-        follow_title: "Seguici",
-        footer_order: "Ordina da asporto"
-      },
-      en: {
-        nav_menu: "Menu",
-        nav_reserve: "Reserve",
-        hero_badge: "Since 1989 · Wood-fired oven",
-        hero_title: "Traditional pizza, just like the old days.",
-        hero_sub: "Long-fermented dough, fresh ingredients and a wood-fired oven. Book your table or order takeaway.",
-        cta_view_menu: "View the menu",
-        cta_book: "Book now",
-        reviews_title: "What our customers say",
-        reviews_1: "“Best pizza in the area! Light dough and fresh ingredients.” – Marco",
-        reviews_2: "“Cozy atmosphere and impeccable service.” – Laura",
-        special_title: "House Special",
-        special_name: "Pizza Regina",
-        special_desc: "Our most loved pizza: buffalo mozzarella PDO, fresh cherry tomatoes, basil and premium EVO oil.",
-        gallery_title: "Gallery",
-        about_title: "Our story",
-        about_text_1: "We're a family-run pizzeria: we select Italian flours and natural leaven for a light, digestible dough.",
-        about_text_2: "Every pizza is hand-stretched and baked in our wood-fired oven. Welcome — make yourself at home.",
-        menu_title: "Our menu",
-        menu_classic: "Classic Pizzas",
-        menu_special: "Oven Specials",
-        dish_margherita: "San Marzano tomatoes, fior di latte, basil",
-        dish_marinara: "Tomato, garlic, oregano, extra-virgin olive oil",
-        dish_diavola: "Spicy salami, tomato, fior di latte",
-        dish_bufalina: "Buffalo mozzarella PDO, tomato, basil",
-        dish_quattro: "Mozzarella, gorgonzola, provola, grana",
-        dish_campagnola: "Seasonal grilled veggies, EVO oil",
-        menu_note: "* Wholegrain and lactose-free dough upon request.",
-        reserve_title: "Book a table",
-        reserve_text: "Reserve via WhatsApp or fill in the form. We'll confirm shortly.",
-        reserve_whatsapp: "Reserve on WhatsApp",
-        form_name: "Name",
-        form_date: "Date",
-        form_time: "Time",
-        form_people: "People",
-        form_phone: "Phone",
-        form_notes: "Notes",
-        form_submit: "Send request",
-        footer_tag: "Italian tradition since 1989",
-        hours_title: "Opening hours",
-        day_mon: "Monday", day_tue: "Tuesday", day_wed: "Wednesday", day_thu: "Thursday", day_fri: "Friday", day_sat: "Saturday", day_sun: "Sunday",
-        follow_title: "Follow us",
-        footer_order: "Order takeaway"
-      }
+      it:{nav_menu:"Menu",nav_reserve:"Prenota",hero_badge:"Dal 1989 · Forno a legna",hero_title:"La pizza della tradizione, come una volta.",hero_sub:"Impasto a lunga lievitazione, ingredienti freschi e forno a legna. Prenota il tuo tavolo o ordina da asporto.",cta_view_menu:"Sfoglia il menù",cta_book:"Prenota ora",reviews_title:"Cosa dicono i nostri clienti",reviews_1:"“La migliore pizza della zona! Impasto leggero e ingredienti freschi.” – Marco",reviews_2:"“Atmosfera accogliente e servizio impeccabile.” – Laura",special_title:"Specialità della Casa",special_name:"Pizza Regina",special_desc:"La nostra pizza più amata: bufala DOP, pomodorini freschi, basilico e olio EVO premium.",gallery_title:"Galleria",about_title:"La nostra storia",about_text_1:"Siamo una pizzeria di famiglia: selezioniamo farine italiane e lieviti naturali per un impasto leggero e digeribile.",about_text_2:"Ogni pizza è stesa a mano e cotta nel nostro forno a legna. Ti aspettiamo per farti sentire come a casa.",menu_title:"Il nostro menù",menu_classic:"Pizze Classiche",menu_special:"Speciali del Forno",dish_margherita:"Pomodoro San Marzano, fior di latte, basilico",dish_marinara:"Pomodoro, aglio, origano, olio EVO",dish_diavola:"Salame piccante, pomodoro, fior di latte",dish_bufalina:"DOP mozzarella di bufala, pomodoro, basilico",dish_quattro:"Mozzarella, gorgonzola, provola, grana",dish_campagnola:"Verdure di stagione grigliate, olio EVO",menu_note:"* Impasto integrale e senza lattosio su richiesta.",reserve_title:"Prenota un tavolo",reserve_text:"Prenota via WhatsApp o compila il modulo. Ti confermeremo al più presto.",reserve_whatsapp:"Prenota su WhatsApp",form_name:"Nome",form_date:"Data",form_time:"Orario",form_people:"Persone",form_phone:"Telefono",form_notes:"Note",form_submit:"Invia richiesta",footer_tag:"Tradizione italiana dal 1989",hours_title:"Orari",day_mon:"Lunedì",day_tue:"Martedì",day_wed:"Mercoledì",day_thu:"Giovedì",day_fri:"Venerdì",day_sat:"Sabato",day_sun:"Domenica",follow_title:"Seguici",footer_order:"Ordina da asporto"},
+      en:{nav_menu:"Menu",nav_reserve:"Reserve",hero_badge:"Since 1989 · Wood-fired oven",hero_title:"Traditional pizza, just like the old days.",hero_sub:"Long-fermented dough, fresh ingredients and a wood-fired oven. Book your table or order takeaway.",cta_view_menu:"View the menu",cta_book:"Book now",reviews_title:"What our customers say",reviews_1:"“Best pizza in the area! Light dough and fresh ingredients.” – Marco",reviews_2:"“Cozy atmosphere and impeccable service.” – Laura",special_title:"House Special",special_name:"Pizza Regina",special_desc:"Our most loved pizza: buffalo mozzarella PDO, fresh cherry tomatoes, basil and premium EVO oil.",gallery_title:"Gallery",about_title:"Our story",about_text_1:"We're a family-run pizzeria: we select Italian flours and natural leaven for a light, digestible dough.",about_text_2:"Every pizza is hand-stretched and baked in our wood-fired oven. Welcome — make yourself at home.",menu_title:"Our menu",menu_classic:"Classic Pizzas",menu_special:"Oven Specials",dish_margherita:"San Marzano tomatoes, fior di latte, basil",dish_marinara:"Tomato, garlic, oregano, extra-virgin olive oil",dish_diavola:"Spicy salami, tomato, fior di latte",dish_bufalina:"Buffalo mozzarella PDO, tomato, basil",dish_quattro:"Mozzarella, gorgonzola, provola, grana",dish_campagnola:"Seasonal grilled veggies, EVO oil",menu_note:"* Wholegrain and lactose-free dough upon request.",reserve_title:"Book a table",reserve_text:"Reserve via WhatsApp or fill in the form. We'll confirm shortly.",reserve_whatsapp:"Reserve on WhatsApp",form_name:"Name",form_date:"Date",form_time:"Time",form_people:"People",form_phone:"Phone",form_notes:"Notes",form_submit:"Send request",footer_tag:"Italian tradition since 1989",hours_title:"Opening hours",day_mon:"Monday",day_tue:"Tuesday",day_wed:"Wednesday",day_thu:"Thursday",day_fri:"Friday",day_sat:"Saturday",day_sun:"Sunday",follow_title:"Follow us",footer_order:"Order takeaway"}
     };
 
-    // ===== Language toggle =====
-    const switcher = document.querySelector('.lang-switch');
-    const langButtons = switcher.querySelectorAll('button');
-    let currentLang = 'it';
+    const drawer = document.getElementById('drawer');
+    const openDrawer = document.getElementById('openDrawer');
+    const closeDrawer = document.getElementById('closeDrawer');
+
+    function toggleDrawer(open){
+      drawer.classList.toggle('open', open);
+      drawer.setAttribute('aria-hidden', !open);
+      openDrawer.setAttribute('aria-expanded', open);
+    }
+    openDrawer.addEventListener('click', ()=>toggleDrawer(true));
+    closeDrawer.addEventListener('click', ()=>toggleDrawer(false));
+    drawer.addEventListener('click', e=>{ if(e.target===drawer) toggleDrawer(false); });
+
+    // Lingua (desktop + mobile sincronizzati)
+    const langDesktop = document.getElementById('langDesktop');
+    const langMobile  = document.getElementById('langMobile');
+    let currentLang='it';
 
     function applyI18n(lang){
       document.documentElement.lang = lang;
@@ -446,62 +339,57 @@
         const value = dict[lang][key];
         if(value) el.textContent = value;
       });
-      langButtons.forEach(b=>{
-        const isActive = b.dataset.lang===lang;
-        b.classList.toggle('active', isActive);
-        b.setAttribute('aria-pressed', isActive);
+      // tasti attivi
+      [...langDesktop.querySelectorAll('button'), ...langMobile.querySelectorAll('button')].forEach(b=>{
+        const active=b.dataset.lang===lang;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-pressed', active);
       });
       document.title = lang==='it'
         ? "Pizzeria al Forno | Pizza Tradizionale al Forno a Legna — IT/EN"
         : "Pizzeria al Forno | Traditional Wood-Fired Pizza — IT/EN";
+      // aggiorna link WA
+      waButton.href = makeWALink(lang==='it' ? 'Ciao! Vorrei prenotare un tavolo.' : "Hello! I'd like to book a table.");
+      if(ctaOrder) ctaOrder.href = makeWALink(lang==='it' ? 'Vorrei ordinare da asporto.' : 'I would like to order takeaway.');
     }
 
-    langButtons.forEach(b=>{
-      b.addEventListener('click', ()=>{
-        currentLang = b.dataset.lang;
-        applyI18n(currentLang);
-        waButton.href = makeWALink(currentLang==='it' ? 'Ciao! Vorrei prenotare un tavolo.' : "Hello! I'd like to book a table.");
-        ctaOrder && (ctaOrder.href = makeWALink(currentLang==='it' ? 'Vorrei ordinare da asporto.' : 'I would like to order takeaway.'));
+    function bindLangSwitch(container){
+      container.querySelectorAll('button').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          currentLang = btn.dataset.lang;
+          applyI18n(currentLang);
+          toggleDrawer(false); // chiudi drawer se aperto
+        });
       });
-    });
-
+    }
+    bindLangSwitch(langDesktop);
+    bindLangSwitch(langMobile);
     applyI18n(currentLang);
 
-    // ===== WhatsApp deep link & form handler =====
-    const WA_NUMBER = '+390612345678'; // numero demo
+    // WhatsApp deep link
+    const WA_NUMBER = '+390612345678';
     const waButton = document.getElementById('waButton');
     const ctaOrder = document.getElementById('ctaOrder');
-
     function makeWALink(text){
       const msg = encodeURIComponent(text);
       return `https://wa.me/${WA_NUMBER.replace(/[^\d+]/g,'')}/?text=${msg}`;
     }
-
-    function prefillMessage(fields){
-      return currentLang==='it'
-        ? `Ciao! Vorrei prenotare un tavolo.\nNome: ${fields.name}\nData: ${fields.date}\nOrario: ${fields.time}\nPersone: ${fields.people}\nTelefono: ${fields.phone||'-'}\nNote: ${fields.notes||'-'}`
-        : `Hello! I'd like to book a table.\nName: ${fields.name}\nDate: ${fields.date}\nTime: ${fields.time}\nPeople: ${fields.people}\nPhone: ${fields.phone||'-'}\nNotes: ${fields.notes||'-'}`;
-    }
-
-    // Default WA links
     waButton.href = makeWALink('Ciao! Vorrei prenotare un tavolo.');
-    ctaOrder && (ctaOrder.href = makeWALink('Vorrei ordinare da asporto.'));
 
     document.getElementById('reserveForm').addEventListener('submit', (e)=>{
       e.preventDefault();
       const data = Object.fromEntries(new FormData(e.target).entries());
-      const msg = prefillMessage(data);
+      const msg = currentLang==='it'
+        ? `Ciao! Vorrei prenotare un tavolo.\nNome: ${data.name}\nData: ${data.date}\nOrario: ${data.time}\nPersone: ${data.people}\nTelefono: ${data.phone||'-'}\nNote: ${data.notes||'-'}`
+        : `Hello! I'd like to book a table.\nName: ${data.name}\nDate: ${data.date}\nTime: ${data.time}\nPeople: ${data.people}\nPhone: ${data.phone||'-'}\nNotes: ${data.notes||'-'}`;
       window.open(makeWALink(msg), '_blank');
     });
 
-    // Year
-    const yearEl = document.getElementById('year');
-    if(yearEl) yearEl.textContent = new Date().getFullYear();
+    // year
+    const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
   </script>
-
-  <!-- Pulsante flottante WhatsApp -->
-  <a href="#reserve" id="waFloat" class="btn primary" style="position:fixed;bottom:20px;right:20px;z-index:1000">WhatsApp</a>
 </body>
 </html>
+
 
 
