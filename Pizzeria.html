@@ -6,9 +6,12 @@
   <title>Pizzeria al Forno | Pizza Tradizionale al Forno a Legna – IT/EN</title>
   <meta name="keywords" content="pizzeria, forno a legna, pizza tradizionale, migliore pizza, prenotazione ristorante, Italian restaurant">
   <meta name="description" content="Pizzeria tradizionale italiana – forno a legna, ingredienti freschi, prenotazioni online. Bilingual demo website (Italian/English)." />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg:#fff9f2;           /* beige caldo */
@@ -23,6 +26,7 @@
     html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto;display:block}
+
     /* Layout */
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
     header{position:sticky;top:0;z-index:50;background:rgba(255,250,244,.9);backdrop-filter:blur(8px);border-bottom:1px solid #efe2d3}
@@ -40,7 +44,12 @@
 
     /* Hero */
     .hero{position:relative;isolation:isolate}
-    .hero::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1541745537413-b804bfff6974?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;z-index:-1;filter:brightness(.55)}
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background:url('https://images.unsplash.com/photo-1541745537413-b804bfff6974?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      z-index:-1;filter:brightness(.55)
+    }
     .hero .container{padding:86px 20px 100px 20px;color:#000}
     .hero h2{font-family:"Playfair Display",serif;font-size:44px;line-height:1.1;margin:0 0 12px;color:#000}
     .hero p{max-width:680px;font-size:18px;opacity:.95;margin:0 0 20px;color:#000}
@@ -74,14 +83,20 @@
     .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.2);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);color:#000}
     .section-title{font-family:"Playfair Display",serif;font-size:34px;margin:0 0 18px}
     .subtle{color:var(--muted)}
-  /* Animations */
+
+    /* Animations */
     .btn:hover{transform:scale(1.05);transition:0.3s ease}
     .card{transition:transform 0.3s ease}
     .card:hover{transform:translateY(-5px)}
   </style>
+
+  <!-- Open Graph (social) -->
   <meta property="og:title" content="Pizzeria al Forno - Pizza Tradizionale al Forno a Legna"/>
   <meta property="og:description" content="Pizzeria tradizionale italiana con forno a legna, ingredienti freschi e prenotazioni rapide via WhatsApp."/>
-  <meta property="og:type" content="restaurant"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://images.unsplash.com/photo-1541745537413-b804bfff6974?auto=format&fit=crop&w=1200&q=80"/>
+
+  <!-- Schema.org -->
   <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@type": "Restaurant",
@@ -92,7 +107,7 @@
     "priceRange": "€€",
     "url": "https://www.pizzeriaalforno.it",
     "openingHours": "Mo-Su 12:30-23:00",
-    "image": "https://images.unsplash.com/photo-1541745537413-b804bfff6974",
+    "image": "https://images.unsplash.com/photo-1541745537413-b804bfff6974?auto=format&fit=crop&w=1200&q=80",
     "acceptsReservations": "True"
   }</script>
 </head>
@@ -125,10 +140,40 @@
       </div>
     </div>
   </section>
-<section id="reviews" aria-label="Recensioni"><div class="container"><h3 class="section-title">Cosa dicono i nostri clienti</h3><div class="card" style="padding:20px"><p>“La migliore pizza della zona! Impasto leggero e ingredienti freschi.” – Marco</p><p>“Atmosfera accogliente e servizio impeccabile.” – Laura</p></div></div></section>
-<section id="special" aria-label="Specialità della casa"><div class="container"><h3 class="section-title">Specialità della Casa</h3><div class="card" style="padding:20px"><h4>Pizza Regina</h4><p>La nostra pizza più amata: bufala DOP, pomodorini freschi, basilico e olio EVO premium.</p></div></div></section>
-<section id="gallery" aria-label="Galleria Fotografica"><div class="container"><h3 class="section-title">Galleria</h3><div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:10px"><img src="https://images.unsplash.com/photo-1601924582971-c9d1955d39e0?q=80" alt="Pizza forno"><img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?q=80" alt="Forno a legna"><img src="https://images.unsplash.com/photo-1543779503-6b6c03b7c4c9?q=80" alt="Ingredienti freschi"></div></div></section>
-<section id="about" aria-label="About">
+
+  <section id="reviews" aria-label="Recensioni">
+    <div class="container">
+      <h3 class="section-title">Cosa dicono i nostri clienti</h3>
+      <div class="card" style="padding:20px">
+        <p>“La migliore pizza della zona! Impasto leggero e ingredienti freschi.” – Marco</p>
+        <p>“Atmosfera accogliente e servizio impeccabile.” – Laura</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="special" aria-label="Specialità della casa">
+    <div class="container">
+      <h3 class="section-title">Specialità della Casa</h3>
+      <div class="card" style="padding:20px">
+        <h4>Pizza Regina</h4>
+        <p>La nostra pizza più amata: bufala DOP, pomodorini freschi, basilico e olio EVO premium.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galleria aggiornata -->
+  <section id="gallery" aria-label="Galleria Fotografica">
+    <div class="container">
+      <h3 class="section-title">Galleria</h3>
+      <div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:10px">
+        <img src="https://images.unsplash.com/photo-1601924582971-c9d1955d39e0?auto=format&fit=crop&w=800&q=80" alt="Pizza forno" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=800&q=80" alt="Forno a legna" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1543779503-6b6c03b7c4c9?auto=format&fit=crop&w=800&q=80" alt="Ingredienti freschi" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" aria-label="About">
     <div class="container grid grid-2">
       <div class="card" style="padding:24px">
         <h3 class="section-title" data-i18n="about_title">La nostra storia</h3>
@@ -136,7 +181,7 @@
         <p class="subtle" data-i18n="about_text_2">Ogni pizza è stesa a mano e cotta nel nostro forno a legna. Ti aspettiamo per farti sentire come a casa.</p>
       </div>
       <div class="card" style="overflow:hidden">
-        <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=1600&auto=format&fit=crop" alt="Pizza napoletana uscita dal forno a legna" />
+        <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=1600&q=80" alt="Pizza napoletana uscita dal forno a legna" loading="lazy" />
       </div>
     </div>
   </section>
@@ -393,6 +438,9 @@
       b.addEventListener('click', ()=>{
         currentLang = b.dataset.lang;
         applyI18n(currentLang);
+        // aggiorna CTA WhatsApp/Takeaway nella lingua corrente
+        waButton.href = makeWALink(currentLang==='it' ? 'Ciao! Vorrei prenotare un tavolo.' : "Hello! I'd like to book a table.");
+        ctaOrder.href = makeWALink(currentLang==='it' ? 'Vorrei ordinare da asporto.' : 'I would like to order takeaway.');
       });
     });
 
@@ -409,15 +457,14 @@
     }
 
     function prefillMessage(fields){
-      const t = dict[currentLang];
       return currentLang==='it'
         ? `Ciao! Vorrei prenotare un tavolo.\nNome: ${fields.name}\nData: ${fields.date}\nOrario: ${fields.time}\nPersone: ${fields.people}\nTelefono: ${fields.phone||'-'}\nNote: ${fields.notes||'-'}`
         : `Hello! I'd like to book a table.\nName: ${fields.name}\nDate: ${fields.date}\nTime: ${fields.time}\nPeople: ${fields.people}\nPhone: ${fields.phone||'-'}\nNotes: ${fields.notes||'-'}`;
     }
 
-    // Default WA button text
-    waButton.href = makeWALink(currentLang==='it' ? 'Ciao! Vorrei prenotare un tavolo.' : "Hello! I'd like to book a table.");
-    ctaOrder.href = makeWALink(currentLang==='it' ? 'Vorrei ordinare da asporto.' : 'I would like to order takeaway.');
+    // Default WA links
+    waButton.href = makeWALink('Ciao! Vorrei prenotare un tavolo.');
+    ctaOrder.href = makeWALink('Vorrei ordinare da asporto.');
 
     document.getElementById('reserveForm').addEventListener('submit', (e)=>{
       e.preventDefault();
@@ -429,6 +476,9 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-<a href="#reserve" id="waFloat" class="btn primary" style="position:fixed;bottom:20px;right:20px;z-index:1000">WhatsApp</a>
+
+  <!-- Pulsante flottante WhatsApp -->
+  <a href="#reserve" id="waFloat" class="btn primary" style="position:fixed;bottom:20px;right:20px;z-index:1000">WhatsApp</a>
 </body>
 </html>
+
